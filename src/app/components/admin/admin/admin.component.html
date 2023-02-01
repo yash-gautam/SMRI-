@@ -1,0 +1,163 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="../../../../assets/logoNew.png"
+          height="40"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarItems">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="">Assessment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Analysis</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+
+
+
+
+      <!-- <button type="button" class="btn btn-link px-3 me-2" style="text-decoration: none; color: black; font-weight: 600;">
+        Yash Gautam
+      </button> -->
+      <!-- <button type="button" class="btn btn-primary me-3" style="background: #003153; border: 1px solid #003153; font-size: .93rem; border-radius: 6px;">
+        Sign up for free
+      </button> -->
+      <!-- Avatar -->
+      <a
+        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="../../../../assets/user4.png"
+          class="rounded-circle"
+          height="25"
+          alt="Black and White Portrait of a Man"
+          loading="lazy"
+        />
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+        <li>
+          <a class="dropdown-item" href="#">My profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Settings</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+
+<!-- <div class="defaultContent" *ngIf="showDefaultContent">
+  <img class="defImage" src="../../../../assets/loginTrial.PNG" width="100%" alt="">
+  <div style="">
+    <p class="defText">No Models Added...</p>
+    <button class="defAddModel">Add Model</button>
+  </div>
+</div> -->
+
+<div class="defaultContent" *ngIf="showDefaultContent">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <img class="defImage" src="../../../../assets/loginTrial.PNG" width="100%" alt="">
+    </div>
+    <div class="col-4 mt-4">
+      <p class="defText">No Models Added...</p>
+      <button class="defAddModel">Add Model</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="showDimensionTable">
+  <div class="titleArea">
+    <div class="title">SIRI</div>
+    <div class="instructions">All the dimensional data available under SIRI model is provided below:
+      <button class="addDimension">Add Dimension</button>
+    </div>
+
+  </div>
+
+
+  <table class="table table-bordered mt-4 dimensionTable" style="width: 94%; margin-left: auto; margin-right: auto;">
+    <thead>
+      <tr>
+        <th scope="col" rowspan="2" class="tableHeading"></th>
+        <th scope="col" rowspan="2" class="tableHeading">Dimension Title</th>
+        <th scope="col" rowspan="2" class="tableHeading">Dimension Description</th>
+        <th scope="col" rowspan="2" class="tableHeading">Dimension Weight</th>
+        <th scope="col" rowspan="2" class="tableHeading">Dimension Cutoff</th>
+        <th scope="col" colspan="6" class="tableHeading">Rating</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dimensionArray | paginate: {itemsPerPage: count, currentPage: p}; let i=index">
+        <th>{{i+1}}</th>
+        <th><input class="dimensionInputBox" type="text" value="Title"></th>
+        <td><input class="dimensionInputBox" type="text" value="desc"></td>
+        <td><input class="dimensionInputBox" type="number" value="0.33" max="1" min="0"></td>
+        <td><input class="dimensionInputBox" type="number" placeholder="Enter Cutoff between 0-5" value="2" max="5" min="0" oninput="validity.valid||(value='');"></td>
+        <td><input class="dimensionInputBox" type="text" value="0-desc"></td>
+        <td><input class="dimensionInputBox" type="text" value="1-desc"></td>
+        <td><input class="dimensionInputBox" type="text" value="2-desc"></td>
+        <td><input class="dimensionInputBox" type="text" value="3-desc"></td>
+        <td><input class="dimensionInputBox" type="text" value="4-desc"></td>
+        <td><input class="dimensionInputBox" type="text" value="5-desc"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="paginationControl" style="float: right; margin-right: 3%; margin-top: .5%;">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
+</div>

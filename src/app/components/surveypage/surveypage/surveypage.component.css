@@ -1,0 +1,41 @@
+
+.modelBox{
+  /* background: #ff574a; */
+  text-align: center;
+  /* padding: 40px 90px; */
+  /* color: #fff; */
+  /* position: relative; */
+  border-radius: 20px;
+}
+
+.modelPic{
+  width: 120px;
+  border-radius: 50%;
+  /* background: #003153; */
+  background: #003153;
+  padding: 3px;
+  margin-top: 10px;
+}
+
+.titleCard{
+  font-family: 'Philosopher', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.useModelButton{
+  background: #003153;
+  color: white;
+  font-family: 'Lora';
+  font-size: .93rem;
+  border-radius: 4px;
+}
+
+.likeButton{
+  color: rgb(11, 131, 7);
+  font-size: 1.4rem;
+}
+
+.modelCardOuter:hover{
+  transform: scale(1.01);
+}

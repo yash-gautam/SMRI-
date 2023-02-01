@@ -1,0 +1,559 @@
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+          <img
+            src="../../../../assets/logoNew.png"
+            height="40"
+            alt="MDB Logo"
+            loading="lazy"
+          />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarItems">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="">Assessment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Analysis</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+
+
+
+
+        <button type="button" class="btn btn-link px-3 me-2" style="text-decoration: none; color: black; font-weight: 400;">
+          Login
+        </button>
+        <button type="button" class="btn btn-primary me-3" style="background: #003153; border: 1px solid #003153; font-size: .93rem; border-radius: 6px;">
+          Sign up for free
+        </button>
+        <!-- Avatar -->
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="../../../../assets/user4.png"
+            class="rounded-circle"
+            height="25"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          />
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li>
+            <a class="dropdown-item" href="#">My profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Settings</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+  <div class="pageContent">
+    <div class="title">Industry 4.0 Readiness Check</div>
+    <div class="instructions">Start by filling the survey for the companies provided below: </div>
+  </div>
+
+  <div *ngFor="let company of organizationsArray; let i=index;">
+    <div class="accordion"  (click)="displayTableForCompany(i)">
+      <span>{{i+1}}. {{company}}</span>
+      <span class="dropDownIcon">
+        <i class='bx bx-chevron-down'></i>
+      </span>
+    </div>
+
+    <table class="table table mt-1 assessmentTable" style="width: 90%; margin-left: auto; margin-right: auto; text-align: center;"
+    *ngIf="booleanArray[i]">
+      <thead>
+        <tr>
+          <th></th>
+          <th scope="col" colspan="2">DIMENSION</th>
+          <th scope="col">0</th>
+          <th scope="col">1</th>
+          <th scope="col">2</th>
+          <th scope="col">3</th>
+          <th scope="col">4</th>
+          <th scope="col">5</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let dimension of dimensionsArray; let dimNo=index">
+        <tr>
+          <th class="blocks" rowspan="9" ><span>{{company}}</span></th>
+          <td class="pillars" rowspan="3">{{dimension}}</td>
+          <td class="dimensions" rowspan="3">{{dimensionsWeightArray[dimNo]}}</td>
+          <td colspan="6" class="dimensionDescription" ><span>Vertical Integration is the integration of processes and systems across all hierarchical levels of the automation pyramid within a facility to establish a connected, end-to-end data thread.</span></td>
+        </tr>
+        <tr >
+          <td colspan="6" class="bandValueDescription">
+            <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group" style="width: 100%;">
+              <span *ngIf="ngifShowTick(company, dimension)" class="mt-1"><i style="font-size: 1.36rem; font-weight: 700; color: rgb(11, 175, 33);" class='bx bx-check'></i></span>
+              <button class="dimensionBandValue" *ngFor="let i of rating" (click)="getBandRating(company, dimension, i)">
+                {{ i }}
+              </button>
+            </div>
+           </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" *ngIf="ngifMethod(company, dimension)" class="valueDescriptionBox">
+            <span class="bandValueSelected">{{bandValueSelected}}</span>
+              Band Level Selected
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <table class="table table mt-5 assessmentTable" style="width: 90%; margin: auto;text-align: center;"
+  >
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col" colspan="2">BAND</th>
+        <th scope="col">0</th>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+        <th scope="col">3</th>
+        <th scope="col">4</th>
+        <th scope="col">5</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let item of dimensionsArray">
+      <tr>
+        <th class="blocks" rowspan="9" ><span>'Company Name'</span></th>
+        <td class="pillars" rowspan="3">'Dimension Title'</td>
+        <td class="dimensions" rowspan="3">'Dimension Weight'</td>
+        <td colspan="6" class="dimensionDescription" ><span>Vertical Integration is the integration of processes and systems across all hierarchical levels of the automation pyramid within a facility to establish a connected, end-to-end data thread.</span></td>
+      </tr>
+      <tr >
+        <td colspan="6" class="bandValueDescription">
+          <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group" style="width: 100%;">
+            <button class="dimensionBandValue" *ngFor="let i of rating">
+              {{ i }}
+            </button>
+          </div>
+         </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6" class="valueDescriptionBox">
+          <span class="bandValueSelected">1</span>
+            Band Level Selected
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+
+  <!-- <div *ngFor="let company of allCompanyTable; let i=index">
+    <div *ngIf="showParticularTable">
+      <table class="table table mt-5 assessmentTable" style="width: 90%; margin: auto;text-align: center;"
+    >
+      <thead>
+        <tr>
+          <th></th>
+          <th scope="col" colspan="2">BAND</th>
+          <th scope="col">0</th>
+          <th scope="col">1</th>
+          <th scope="col">2</th>
+          <th scope="col">3</th>
+          <th scope="col">4</th>
+          <th scope="col">5</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let item of dimensionsArray">
+        <tr>
+          <th class="blocks" rowspan="9" ><span>'Company Name'</span></th>
+          <td class="pillars" rowspan="3">'Dimension Title'</td>
+          <td class="dimensions" rowspan="3">'Dimension Weight'</td>
+          <td colspan="6" class="dimensionDescription" ><span>Vertical Integration is the integration of processes and systems across all hierarchical levels of the automation pyramid within a facility to establish a connected, end-to-end data thread.</span></td>
+        </tr>
+        <tr >
+          <td colspan="6" class="bandValueDescription">
+            <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group" style="width: 100%;">
+              <button class="dimensionBandValue" *ngFor="let i of rating">
+                {{ i }}
+              </button>
+            </div>
+           </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" class="valueDescriptionBox">
+            <span class="bandValueSelected">1</span>
+              Band Level Selected
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div> -->
+
+  <!-- <button style="float: right; position: absolute; right: 5%; bottom: 1%;" (click)="nextTable()">Next</button> -->
+
+  <!-- <button (click)="test()">get</button> <br><br> -->
+
+  <!-- <button (click)="testSend('yeet')">send</button> -->
+
+
+
+
+
+
+
+
+  <div class="" style="margin-top: 2.3%;">
+    <div class="row me-5 ms-5">
+      <div class="col-3">
+        <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+          <div class="profile-box">
+            <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+              <!-- <i class='bx bx-info-circle' style="position: absolute; right: 15px; top: 15px; font-size: 1.5rem; color: rgb(240, 240, 240);"></i> -->
+              <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId1">
+                  <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                  <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+                </div>
+              </div>
+              <img class="card-img-top profile-pic" src="../../../../assets/loginTrial.PNG" alt="Card image cap">
+            </div>
+            <div class="card-body" style="margin-top: -3%;">
+              <h5 class="card-title text-center titleCard">SIRI</h5>
+              <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+              <!-- <div>
+                <i class="fas fa-thumbs-up likeButton"></i>
+                <i class="far fa-thumbs-down dislikeButton"></i>
+              </div> -->
+
+              <div *ngIf="showModelDesc">
+                <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+                <div class="text-center">
+                  <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+          <div class="profile-box">
+            <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+              <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId1">
+                  <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                  <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+                </div>
+              </div>
+              <img class="card-img-top profile-pic" src="../../../../assets/loginTrial.PNG" alt="Card image cap">
+            </div>
+            <div class="card-body" style="margin-top: -3%;">
+              <h5 class="card-title text-center titleCard">SIRI</h5>
+              <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+              <!-- <div>
+                <i class="fas fa-thumbs-up likeButton"></i>
+                <i class="far fa-thumbs-down dislikeButton"></i>
+              </div> -->
+
+              <div *ngIf="showModelDesc">
+                <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+                <div class="text-center">
+                  <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+          <div class="profile-box">
+            <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+              <!-- <i class='bx bx-info-circle' style="position: absolute; right: 15px; top: 15px; font-size: 1.5rem; color: rgb(240, 240, 240);"></i> -->
+              <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId1">
+                  <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                  <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+                </div>
+              </div>
+              <img class="card-img-top profile-pic" src="../../../../assets/loginTrial.PNG" alt="Card image cap">
+            </div>
+            <div class="card-body" style="margin-top: -3%;">
+              <h5 class="card-title text-center titleCard">SIRI</h5>
+              <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+              <!-- <div>
+                <i class="fas fa-thumbs-up likeButton"></i>
+                <i class="far fa-thumbs-down dislikeButton"></i>
+              </div> -->
+
+              <div *ngIf="showModelDesc">
+                <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+                <div class="text-center">
+                  <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+          <div class="profile-box">
+            <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+              <!-- <i class='bx bx-info-circle' style="position: absolute; right: 15px; top: 15px; font-size: 1.5rem; color: rgb(240, 240, 240);"></i> -->
+              <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId1">
+                  <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                  <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+                </div>
+              </div>
+              <img class="card-img-top profile-pic" src="../../../../assets/loginTrial.PNG" alt="Card image cap">
+            </div>
+            <div class="card-body" style="margin-top: -3%;">
+              <h5 class="card-title text-center titleCard">SIRI</h5>
+              <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+              <!-- <div>
+                <i class="fas fa-thumbs-up likeButton"></i>
+                <i class="far fa-thumbs-down dislikeButton"></i>
+              </div> -->
+
+              <div *ngIf="showModelDesc">
+                <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+                <div class="text-center">
+                  <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
+    <h1>Appointment Card UI</h1>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="card bg-white p-3 mb-4 shadow">
+          <div class="d-flex justify-content-between mb-4">
+            <div class="user-info">
+              <div class="user-info__img">
+                <img src="img/user1.jpg" alt="User Img">
+              </div>
+              <div class="user-info__basic">
+                <h5 class="mb-0">Kiran Acharya</h5>
+                <p class="text-muted mb-0">28 yrs, Male</p>
+              </div>
+            </div>
+            <div class="dropdown open">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-0">+91 9876543215</h6>
+          <a href="#!"><small>Contact</small></a>
+          <div class="d-flex justify-content-between mt-4">
+            <div>
+              <h5 class="mb-0">06:00 PM
+                <small class="ml-1">2 Feb 2021</small>
+              </h5>
+            </div>
+            <span class="text-success font-weight-bold">Consult</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="card bg-white p-3 mb-4 shadow">
+          <div class="d-flex justify-content-between mb-4">
+            <div class="user-info">
+              <div class="user-info__img">
+                <img src="img/user2.jpg" alt="User Img">
+              </div>
+              <div class="user-info__basic">
+                <h5 class="mb-0">Sandeep Hegde</h5>
+                <p class="text-muted mb-0">28 yrs, Male</p>
+              </div>
+            </div>
+            <div class="dropdown open">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-0">+91 9876543215</h6>
+          <a href="#!"><small>Contact</small></a>
+          <div class="d-flex justify-content-between mt-4">
+            <div>
+              <h5 class="mb-0">06:30 PM
+                <small class="ml-1">2 Feb 2021</small>
+              </h5>
+            </div>
+            <span class="text-success font-weight-bold">Consult</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="card bg-white p-3 mb-4 shadow">
+          <div class="d-flex justify-content-between mb-4">
+            <div class="user-info">
+              <div class="user-info__img">
+                <img src="img/user3.jpg" alt="User Img">
+              </div>
+              <div class="user-info__basic">
+                <h5 class="mb-0">John Doe</h5>
+                <p class="text-muted mb-0">28 yrs, Male</p>
+              </div>
+            </div>
+            <div class="dropdown open">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-0">+91 9876543215</h6>
+          <a href="#!"><small>Contact</small></a>
+          <div class="d-flex justify-content-between mt-4">
+            <div>
+              <h5 class="mb-0">07:00 PM
+                <small class="ml-1">2 Feb 2021</small>
+              </h5>
+            </div>
+            <span class="text-success font-weight-bold">Consult</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="card bg-white p-3 mb-4 shadow">
+          <div class="d-flex justify-content-between mb-4">
+            <div class="user-info">
+              <div class="user-info__img">
+                <img src="img/user7.jpg" alt="User Img">
+              </div>
+              <div class="user-info__basic">
+                <h5 class="mb-0">Vishwanath</h5>
+                <p class="text-muted mb-0">28 yrs, Male</p>
+              </div>
+            </div>
+            <div class="dropdown open">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-0">+91 9876543215</h6>
+          <a href="#!"><small>Contact</small></a>
+          <div class="d-flex justify-content-between mt-4">
+            <div>
+              <h5 class="mb-0">07:15 PM
+                <small class="ml-1">2 Feb 2021</small>
+              </h5>
+            </div>
+            <span class="text-success font-weight-bold">Consult</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->

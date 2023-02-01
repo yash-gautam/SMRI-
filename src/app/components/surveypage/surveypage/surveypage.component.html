@@ -1,0 +1,232 @@
+<div class="assessmentPage" >
+  <table class="table table mt-5 assessmentTable" style="width: 90%; margin: auto;text-align: center;">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col" colspan="2">BAND</th>
+        <th scope="col">0</th>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+        <th scope="col">3</th>
+        <th scope="col">4</th>
+        <th scope="col">5</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let i of dim">
+      <tr>
+        <th class="blocks" rowspan="9" ><span>Dimension </span></th>
+        <td class="pillars" rowspan="3">{{i.name}}</td>
+        <td class="dimensions" rowspan="3">{{i.weight}}</td>
+        <td colspan="6" class="dimensionDescription" ><span>{{i.description}}</span></td>
+      </tr>
+      <tr>
+        <td colspan="6" class="bandValueDescription">
+          <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group" style="width: 100%;">
+            <button class="dimensionBandValue " *ngFor="let j of rating" (click)="getRate(i.name,j)">
+              {{ j }}
+            </button>
+
+          </div>
+         </div>
+        </td>
+      </tr>
+      <tr *ngIf="true">
+        <td colspan="6" *ngIf="ngifMethod(i)" class="valueDescriptionBox">
+          <span ></span>
+
+          <!-- <div class="alert alert-success" role="alert">
+          </div> -->
+        </td>
+      </tr>
+
+
+
+
+      <!-- <tr style="align-items: center">
+        <td></td>
+        <td></td>
+        <td><div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+          <label class="custom-control-label" for="customSwitch1"></label>
+        </div>
+          </td>
+      </tr> -->
+
+
+
+
+        <!-- <td></td>
+        <td></td>
+        <td><div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+          <label class="custom-control-label" for="customSwitch1"></label>
+        </div>
+          </td> -->
+      <!-- Default checked -->
+
+
+
+
+      <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+
+<button type="button" class="btn  nextPageBtn"   routerLink="/organization">Next -></button>
+
+
+<div class="" style="margin-top: 2.3%;">
+  <div class="row me-5 ms-5">
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+        <div class="modelBox">
+          <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+            <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+              </div>
+            </div>
+            <img class="card-img-top modelPic" src="../../../../assets/loginTrial.PNG" alt="Card image">
+          </div>
+          <div class="card-body" style="margin-top: -3%;">
+            <h5 class="card-title text-center titleCard">SIRI</h5>
+            <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+            <!-- <div>
+              <i class="fas fa-thumbs-up likeButton"></i>
+              <i class="far fa-thumbs-down dislikeButton"></i>
+            </div> -->
+
+            <div>
+              <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+              <div class="text-center">
+                <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+        <div class="modelBox">
+          <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+            <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+              </div>
+            </div>
+            <img class="card-img-top modelPic" src="../../../../assets/loginTrial.PNG" alt="Card image">
+          </div>
+          <div class="card-body" style="margin-top: -3%;">
+            <h5 class="card-title text-center titleCard">SIRI</h5>
+            <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+            <!-- <div>
+              <i class="fas fa-thumbs-up likeButton"></i>
+              <i class="far fa-thumbs-down dislikeButton"></i>
+            </div> -->
+
+            <div>
+              <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+              <div class="text-center">
+                <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+        <div class="modelBox">
+          <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+            <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+              </div>
+            </div>
+            <img class="card-img-top modelPic" src="../../../../assets/loginTrial.PNG" alt="Card image">
+          </div>
+          <div class="card-body" style="margin-top: -3%;">
+            <h5 class="card-title text-center titleCard">SIRI</h5>
+            <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+            <!-- <div>
+              <i class="fas fa-thumbs-up likeButton"></i>
+              <i class="far fa-thumbs-down dislikeButton"></i>
+            </div> -->
+
+            <div>
+              <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+              <div class="text-center">
+                <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; border-radius: 15px; border: 3px solid #01192b;">
+        <div class="modelBox">
+          <div class="" style="border-bottom: 2px solid #003153; padding: 20px 0px; background: #015497;">
+            <div class="dropdown open" style="position: absolute; right: 5px; top: 15px;">
+              <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v" style="color: white; font-size: 1.5rem;"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="triggerId1">
+                <a class="dropdown-item" href="#"><i class="bx bx-info-circle mr-1"></i> Info</a>
+                <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Remove Suggestion</a>
+              </div>
+            </div>
+            <img class="card-img-top modelPic" src="../../../../assets/loginTrial.PNG" alt="Card image">
+          </div>
+          <div class="card-body" style="margin-top: -3%;">
+            <h5 class="card-title text-center titleCard">SIRI</h5>
+            <!-- <p class="text-muted mt-0 mb-3" style="font-size: .9rem;">16 Dimensions</p> -->
+
+            <!-- <div>
+              <i class="fas fa-thumbs-up likeButton"></i>
+              <i class="far fa-thumbs-down dislikeButton"></i>
+            </div> -->
+
+            <div>
+              <p class="card-text text-lg-start">Help companies identify focus areas of transformation that will generate the greatest value to companies.</p>
+              <div class="text-center">
+                <a href="#" class="btn justify-content-center useModelButton">Proceed</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

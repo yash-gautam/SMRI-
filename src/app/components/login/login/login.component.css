@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@700&family=Merienda+One&family=Merienda:wght@400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Rakkas&family=Reggae+One&family=Suez+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ /* font-family: 'Amita', cursive; */
+/* font-family: 'Merienda', cursive; */
+/* font-family: 'Merienda One', cursive; */
+/* font-family: 'Philosopher', sans-serif; */
+/* font-family: 'Rakkas', cursive; */
+/* font-family: 'Reggae One', cursive; */
+/* font-family: 'Suez One', serif; */
+
+
+/* font-family: 'Lora', serif; */
+/* font-family: 'Merriweather', serif; */
+/* font-family: 'Vollkorn', serif; */
+
+
+.content{
+  margin-top: 1.4%;
+  margin-left: auto;
+  margin-right: auto;
+  /* background: red; */
+  width: 60%;
+}
+
+.content .title{
+  font-family: 'Suez One', serif;
+  /* font-family: 'Lora', serif; */
+  /* font-family: 'Merriweather', serif; */
+  /* font-family: 'Vollkorn', serif; */
+
+  font-size: 1.2rem;
+  color: #003153;
+  margin-top: 2.5%;
+}
+
+.content .subTitle{
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: .93rem;
+  color: #003153;
+  margin-top: 2.5%;
+}
